@@ -8,8 +8,9 @@ export default function Hero() {
   const splineRef = useRef();
   const words = [
     "Full Stack Developer",
-    "Graphic Designer",
-    "Ui/Ux Designer",
+    "Web Application Developer",
+    "Frontend Developer",
+    "Backend Developer",
     "Mentor",
   ];
 

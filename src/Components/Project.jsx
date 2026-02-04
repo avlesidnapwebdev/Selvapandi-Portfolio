@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 // ✅ Import images
 import Aqua from "../assets/Aquariumshop.png";
 import pilotHorizons from "../assets/pilot horizons.png";
-import vikram from "../assets/vikramtrust2.png";
 import expense from "../assets/expenses racker.png";
 import prabazone from "../assets/prabazone.png";
 
@@ -13,46 +12,36 @@ export default function Project() {
   const projectList = [
     {
       id: 1,
+      title: "Expenses Tracker",
+      description:
+        "A full-stack MERN application for tracking expenses with user authentication and data visualization.",
+      tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "MERN Stack"],
+      image: expense,
+      github: "https://github.com/avlesidnapwebdev/ExpenseTracker",
+      live: "https://expensestra.selvapandi.com/",
+    },
+    {
+      id: 2,
       title: "Aquarium Shop E-commerce",
       description:
         "A full-stack MERN e-commerce website with product search, cart, login system, and payment gateway integration.",
       tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "MERN Stack"],
       image: Aqua,
-      github: "https://github.com/KingRuby14/AquariumShop",
+      github: "https://github.com/avlesidnapwebdev/AquariumShop",
       live: "https://aquariumshop.selvapandi.com/",
     },
     {
-      id: 2,
+      id: 3,
       title: "Pilot Horizons",
       description:
         "A professional WordPress website built for Pilot Horizons with responsive design and optimized SEO.",
       tech: ["WordPress", "Elementor", "SEO", "HTML", "CSS"],
       image: pilotHorizons,
       github: "",
-      live: "https://pilothorizons.xyz/",
-    },
-    {
-      id: 3,
-      title: "Expenses Tracker",
-      description:
-        "A full-stack MERN application for tracking expenses with user authentication and data visualization.",
-      tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "MERN Stack"],
-      image: expense,
-      github: "https://github.com/KingRuby14/ExpenseTracker",
-      live: "https://expensestra.selvapandi.com/",
+      live: "https://pilothorizons.infinityfreeapp.com/",
     },
     {
       id: 4,
-      title: "Vikram Trust",
-      description:
-        "A modern and responsive WordPress site designed for Vikram Trust with donation and contact features.",
-      tech: ["WordPress","Elementor", "HTML", "CSS"],
-      image: vikram,
-      github: "",
-      live: "https://vikramtrust.online/",
-    },
-    {
-      id: 5,
       title: "PrabaZone",
       description:
         "A professional WordPress website built for PrabaZone with responsive design and optimized SEO.",

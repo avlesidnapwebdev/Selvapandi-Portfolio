@@ -5,28 +5,7 @@ import { motion } from "framer-motion";
 
 const Testimonials = () => {
   const testimonials = [
-    {
-      name: "Alexandra",
-      mentions: "Pilot Horizons - Client School Student",
-      review:
-        "Working with Selvapandi on Pilot Horizons was an incredible experience! Despite a tight deadline, the website was delivered within just 12 hours without compromising quality. The platform made complex concepts easy to grasp, offering a well-structured, engaging, and resourceful learning experience.",
-      rating: 5,
-    },
-    {
-      name: "Vikram Trust",
-      mentions: "Client NGO - Unclaimed Project – Now Part of My Portfolio",
-      review:
-        "Originally a client project, Vikram Trust’s website became a testament to my commitment to quality and innovation. Despite challenges, including unfulfilled payments and unresponsive communication, I took full control of the project, transforming it into a platform that reflects my expertise in web development.",
-      rating: 5,
-    },
-    {
-      name: "Ruby",
-      mentions: "Pilot Horizons",
-      review:
-        "Discovering Pilot Horizons has been an incredible help to me as a mother. With my child aspiring to become a pilot, this platform has provided in valuable insights and guidance. It’s a highly recommended resource for students who dream of taking flight and pursuing an aviation career.",
-      rating: 5,
-    },
-    {
+     {
       name: "Mahalakshmi​",
       mentions: "Student - HTML, CSS, JavaScript",
       review:
@@ -47,7 +26,7 @@ const Testimonials = () => {
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
           title="What People Say About Me?"
-          sub="⭐️ Clients & Students feedback highlights ⭐️"
+          sub="⭐️ Students feedback highlights ⭐️"
         />
         <div className="w-5/6 mt-4 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
 

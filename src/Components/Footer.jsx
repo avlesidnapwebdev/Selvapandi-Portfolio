@@ -52,7 +52,7 @@ export default function Footer() {
             <div className="flex justify-center md:justify-start space-x-4">
               <a
                 className="text-white hover:text-violet-400 transition-colors"
-                href="https://github.com/KingRuby14"
+                href="https://github.com/avlesidnapwebdev"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -76,7 +76,7 @@ export default function Footer() {
               </a>
               <a
                 className="text-white hover:text-violet-400 transition-colors"
-                href="https://www.facebook.com/avlesidnapwebdev"
+                href="https://www.facebook.com/avlesidnapdev"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -89,7 +89,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-white mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           <p className="text-white text-sm">
-            © 2025 Selvapandi. All rights reserved.
+            © 2026 Selvapandi. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
