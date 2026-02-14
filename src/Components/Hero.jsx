@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ContactFormModal from "./ContactForm";
 import AnimatedCounter from "./AnimateCounter";
-import Selvapandi from "../assets/Selvapandi.png";
+import Selvapandi from "../assets/selvapandi.png";
 
 export default function Hero() {
   const splineRef = useRef();
