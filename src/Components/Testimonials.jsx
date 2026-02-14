@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
-import TitleHeader from "../components/TitleHeader";
-import GlowCard from "../components/GlowCard";
+import TitleHeader from "../Components/TitleHeader";
+import GlowCard from "../Components/GlowCard";
 import { motion } from "framer-motion";
 
 const Testimonials = () => {
