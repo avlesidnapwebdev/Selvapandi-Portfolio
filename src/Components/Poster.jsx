@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import coffeeposter from "../assets/Cofee Poster.png";
-import washingmachineposter from "../assets/washing Machine poster 2.png";
+import coffeeposter from "../assets/CofeePoster.png";
+import washingmachineposter from "../assets/washingMachineposter2.png";
 import iphoneposter from "../assets/Iphone.png";
-import adobochickenposter from "../assets/Adobo Chicken Poster.png";
-import burger from "../assets/Burger Poster.png";
-import homeposter from "../assets/Home Poster.png";
-import springrollposter from "../assets/spring Roll Poster.png";
+import adobochickenposter from "../assets/AdoboChickenPoster.png";
+import burger from "../assets/BurgerPoster.png";
+import homeposter from "../assets/HomePoster.png";
+import springrollposter from "../assets/springRollPoster.png";
 
 export default function PostersShowcase() {
   const posters = [

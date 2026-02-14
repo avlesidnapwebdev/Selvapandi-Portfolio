@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 // ✅ Import images
 import Aqua from "../assets/Aquariumshop.png";
-import pilotHorizons from "../assets/pilothorizons.png";
+import pilotHorizons from "../assets/pilotHorizons.png";
 import expense from "../assets/expensesracker.png";
 import prabazone from "../assets/prabazone.png";
 
