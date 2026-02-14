@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 // ✅ Import images
 import Aqua from "../assets/Aquariumshop.png";
-import pilotHorizons from "../assets/pilot horizons.png";
-import expense from "../assets/expenses racker.png";
+import pilotHorizons from "../assets/pilothorizons.png";
+import expense from "../assets/expensesracker.png";
 import prabazone from "../assets/prabazone.png";
 
 export default function Project() {
