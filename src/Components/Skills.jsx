@@ -109,11 +109,11 @@ const Skills = () => {
             frameworks.
           </p>
           <ul className="list-disc list-inside text-gray-200 mt-3 space-y-1 text-sm md:text-base">
-            <li>ReactJS, NodeJS, ExpressJS</li>
-            <li>JavaScript (ES6+)</li>
-            <li>MySQL, MongoDB</li>
-            <li>REST API, Firebase, Postman</li>
-            <li>Git, GitHub</li>
+            <li>ReactJS, React Native (Expo), NodeJS, ExpressJS</li>
+            <li>JavaScript (ES6+), REST API Development, JWT Auth</li>
+            <li>MongoDB, MySQL</li>
+            <li>Git, GitHub, Postman, Firebase</li>
+            <li>Cloud Deployment (Oracle VM, Nginx, Cloudflare)</li>
           </ul>
         </motion.div>
 

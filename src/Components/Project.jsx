@@ -1,5 +1,10 @@
 import React from "react";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaMobileAlt,
+  FaDownload,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 
 // ✅ Import images
@@ -12,20 +17,45 @@ export default function Project() {
   const projectList = [
     {
       id: 1,
-      title: "Expenses Tracker",
+      title: "Expenses Tracker (Web & Mobile)",
       description:
-        "A full-stack MERN application for tracking expenses with user authentication and data visualization.",
-      tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "MERN Stack"],
+        "A full-stack MERN financial management application with both web and React Native mobile versions. Features secure authentication, expense tracking, and analytics dashboards with interactive data visualization.",
+      tech: [
+        "React",
+        "React Native",
+        "Expo",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JWT",
+        "REST API",
+        "Chart Analytics",
+        "Tailwind CSS",
+        "MERN Stack",
+      ],
       image: expense,
       github: "https://github.com/avlesidnapwebdev/ExpenseTracker",
+      githubMobile: "https://github.com/avlesidnapwebdev/ExpenseTracker-Mobile",
       live: "https://expensestra.selvapandi.com/",
+      download:
+        "https://drive.google.com/uc?export=download&id=15o9ZvK9TFBznM_vJdumKUYkY60LEN1j_",
     },
     {
       id: 2,
       title: "Aquarium Shop E-commerce",
       description:
-        "A full-stack MERN e-commerce website with product search, cart, login system, and payment gateway integration.",
-      tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "MERN Stack"],
+        "A full-stack MERN e-commerce platform featuring role-based authentication, cart, wishlist, checkout, and admin dashboard. Backend deployed on Oracle Cloud VM with Nginx, Cloudflare proxy, custom domain, HTTPS, and production-ready API setup.",
+      tech: [
+  "React",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "JWT Auth",
+  "Nginx",
+  "Oracle Cloud VM",
+  "Cloudflare",
+  "MERN Stack",
+],
       image: Aqua,
       github: "https://github.com/avlesidnapwebdev/AquariumShop",
       live: "https://aquariumshop.selvapandi.com/",
@@ -64,14 +94,13 @@ export default function Project() {
 
       {/* Timeline */}
       <div className="container mx-auto px-6 relative">
-        {/* Timeline line - animates once */}
         <motion.div
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           viewport={{ once: true }}
           className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-pink-500 transform -translate-x-1/2 origin-top"
-        ></motion.div>
+        />
 
         {projectList.map((p, index) => {
           const isLeft = index % 2 === 0;
@@ -93,7 +122,7 @@ export default function Project() {
                 className="hidden md:block absolute left-[49.3%] top-20 w-6 h-6 bg-purple-500 rounded-full border-4 border-black transform -translate-x-1/2"
               />
 
-              {/* Image Side */}
+              {/* Image */}
               <div
                 className={`w-full md:w-1/2 p-4 ${
                   isLeft ? "md:pr-10 md:text-right" : "md:order-2 md:pl-10"
@@ -103,21 +132,13 @@ export default function Project() {
                   <motion.img
                     src={p.image}
                     alt={p.title}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.2 }}
-                    viewport={{ once: true }}
                     className="mx-auto w-[260px] sm:w-[320px] md:w-[420px] lg:w-[500px] h-auto rounded-xl transform -rotate-2 hover:scale-105 transition-transform duration-500"
                   />
                 </a>
               </div>
 
-              {/* Details Side */}
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                viewport={{ once: true }}
+              {/* Details */}
+              <div
                 className={`w-full md:w-1/2 p-4 ${
                   isLeft ? "md:pl-10 md:order-2" : "md:pr-10"
                 }`}
@@ -125,9 +146,12 @@ export default function Project() {
                 <h3 className="text-xl md:text-2xl font-semibold text-white">
                   {p.title}
                 </h3>
-                <p className="text-gray-400 text-sm capitalize mt-2">{p.description}</p>
 
-                {/* Tech stack */}
+                <p className="text-gray-400 text-sm capitalize mt-2">
+                  {p.description}
+                </p>
+
+                {/* Tech */}
                 <div className="flex flex-wrap gap-2 mt-3">
                   {p.tech.map((t, i) => (
                     <span
@@ -140,7 +164,7 @@ export default function Project() {
                 </div>
 
                 {/* Buttons */}
-                <div className="flex gap-4 mt-5">
+                <div className="flex flex-wrap gap-3 mt-5">
                   {p.github && (
                     <a
                       href={p.github}
@@ -151,6 +175,18 @@ export default function Project() {
                       <FaGithub /> GitHub
                     </a>
                   )}
+
+                  {p.githubMobile && (
+                    <a
+                      href={p.githubMobile}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-gray-200 border border-purple-500 px-3 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition"
+                    >
+                      <FaMobileAlt /> Mobile GitHub
+                    </a>
+                  )}
+
                   {p.live && (
                     <a
                       href={p.live}
@@ -161,8 +197,19 @@ export default function Project() {
                       <FaExternalLinkAlt /> Live Preview
                     </a>
                   )}
+
+                  {p.download && (
+                    <a
+                      href={p.download}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-white bg-green-600 px-3 py-2 rounded-lg hover:bg-green-700 transition"
+                    >
+                      <FaDownload /> Download App
+                    </a>
+                  )}
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           );
         })}

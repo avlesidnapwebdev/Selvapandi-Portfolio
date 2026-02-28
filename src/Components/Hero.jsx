@@ -7,12 +7,13 @@ import Selvapandi from "../assets/selvapandi.png";
 export default function Hero() {
   const splineRef = useRef();
   const words = [
-    "Full Stack Developer",
-    "Web Application Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "Mentor",
-  ];
+  "Full-Stack MERN Developer",
+  "React Native Developer",
+  "Web & Mobile App Developer",
+  "Frontend Developer (React)",
+  "Backend Developer (Node.js)",
+  "Cloud Deployment Engineer",
+];
 
   const [index, setIndex] = useState(0);
 
@@ -101,10 +102,7 @@ export default function Hero() {
             }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-purple-200 max-w-2xl leading-relaxed capitalize backdrop-blur-md bg-white/10 border border-white/20 rounded-xl p-4 sm:p-6 shadow-lg"
           >
-            I craft modern, responsive websites and web apps that are fast,
-            reliable, and user-friendly. With a focus on clean code, clear
-            communication, and on-time delivery, I turn ideas into impactful
-            digital solutions.
+            I craft modern, responsive web and mobile apps that are fast, reliable, and user-friendly. Specializing in MERN stack and React Native, I focus on clean code, clear communication, and on-time delivery to turn ideas into impactful digital solutions.
           </motion.p>
 
           {/* Buttons */}
