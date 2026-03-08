@@ -34,13 +34,6 @@ export default function Footer() {
                 <FiMail className="w-5 h-5" />
                 <span>selvapandi322@gmail.com</span>
               </a>
-              <a
-                href="tel:+919092264342"
-                className="flex items-center font-semibold text-white justify-center md:justify-start gap-2 hover:text-violet-400 transition-colors"
-              >
-                <FiPhone className="w-5 h-5" />
-                <span>+91 9092264342</span>
-              </a>
             </div>
           </div>
 
@@ -65,22 +58,6 @@ export default function Footer() {
                 rel="noreferrer"
               >
                 <FiLinkedin className="w-5 h-5" />
-              </a>
-              <a
-                className="text-white hover:text-violet-400 transition-colors"
-                href="https://www.instagram.com/avlesidnapwebdev/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FiInstagram className="w-5 h-5" />
-              </a>
-              <a
-                className="text-white hover:text-violet-400 transition-colors"
-                href="https://www.facebook.com/avlesidnapdev"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FiFacebook className="w-5 h-5" />
               </a>
             </div>
           </div>

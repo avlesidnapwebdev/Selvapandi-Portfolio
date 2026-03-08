@@ -9,7 +9,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import { useState } from "react";
-import ContactFormModal from "./ContactForm"; // ✅ imported
+import ContactFormModal from "./ContactForm";
 
 export default function Header() {
   // toggle the menu Open/Close
@@ -55,8 +55,8 @@ export default function Header() {
               // { name: "About", href: "#About" },
               { name: "Skills", href: "#Skills" },
               { name: "Work", href: "#Projects" },
-              { name: "Posters", href: "#Poster" },
-              { name: "Testimonials", href: "#Testimonials" },
+              // { name: "Posters", href: "#Poster" },
+              // { name: "Testimonials", href: "#Testimonials" },
               // { name: "Contact", href: "#Contact" },
             ].map((item, index) => (
               <motion.a
@@ -102,27 +102,6 @@ export default function Header() {
               <FiLinkedin className="w-5 h-5" />
             </motion.a>
 
-            <motion.a
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.3, duration: 0.8 }}
-              className="text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300"
-              href="https://www.instagram.com/avlesidnapwebdev/"
-              target="_blank"
-            >
-              <FiInstagram className="w-5 h-5" />
-            </motion.a>
-
-            <motion.a
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.3, duration: 0.8 }}
-              className="text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300"
-              href="https://www.facebook.com/avlesidnapdev"
-              target="_blank"
-            >
-              <FiFacebook className="w-5 h-5" />
-            </motion.a>
 
             {/* Get In Touch me button */}
             <motion.button
@@ -176,8 +155,8 @@ export default function Header() {
               // { name: "About", href: "#About" },
               { name: "Skills", href: "#Skills" },
               { name: "Work", href: "#Projects" },
-              { name: "Posters", href: "#Poster" },
-              { name: "Testimonials", href: "#Testimonials" },
+              // { name: "Posters", href: "#Poster" },
+              // { name: "Testimonials", href: "#Testimonials" },
               // { name: "Contact", href: "#Contact" },
             ].map((item) => (
               <a
@@ -201,15 +180,6 @@ export default function Header() {
                 target="_blank"
               >
                 <FiLinkedin className="h-5 w-5 text-gray-300" />
-              </a>
-              <a
-                href="https://www.instagram.com/avlesidnapwebdev/"
-                target="_blank"
-              >
-                <FiInstagram className="h-5 w-5 text-gray-300" />
-              </a>
-              <a href="https://www.facebook.com/avlesidnapdev" target="_blank">
-                <FiFacebook className="h-5 w-5 text-gray-300" />
               </a>
             </div>
 

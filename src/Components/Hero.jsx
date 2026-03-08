@@ -89,7 +89,7 @@ export default function Hero() {
               </AnimatePresence>
             </span>
           </motion.h1>
-
+<br/>
           <motion.p
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
