@@ -1,199 +1,123 @@
-import React, { useRef, useState, useEffect } from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
+import image from "../assets/pic.webp";
 import { motion, AnimatePresence } from "framer-motion";
-import ContactFormModal from "./ContactForm";
-import AnimatedCounter from "./AnimateCounter";
-import Selvapandi from "../assets/selvapandi.png";
 
 export default function Hero() {
-  const splineRef = useRef();
-  const words = [
-  "Full-Stack MERN Developer",
-  "React Native Developer",
-  "Web & Mobile App Developer",
-  "Frontend Developer (React)",
-  "Backend Developer (Node.js)",
-  "Cloud Deployment Engineer",
-];
+  const roles = [
+    "Full Stack Web Developer",
+    "React Native Developer",
+    "Web & Mobile App Developer",
+  ];
 
-  const [index, setIndex] = useState(0);
+  const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
+      setRoleIndex((prev) => (prev + 1) % roles.length);
     }, 2500);
+
     return () => clearInterval(interval);
   }, []);
 
-  const [contactFormOpen, setContactFormOpen] = useState(false);
-  const openContactForm = () => setContactFormOpen(true);
-  const closeContactForm = () => setContactFormOpen(false);
-
   return (
-    <>
-      <section
-        id="Hero"
-        className="relative min-h-screen bg-black flex xl:flex-row flex-col-reverse items-center justify-between lg:px-24 px-6 overflow-hidden"
-      >
-        {/* Floating gradient bubbles */}
-        <div className="absolute inset-0 z-10 overflow-hidden">
-          {/* Top Left */}
-          <div className="absolute top-10 left-1/4 w-72 h-72 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 rounded-full opacity-30 blur-3xl animate-float-slow"></div>
+    <section className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex items-center justify-center px-6">
+      <div className="max-w-7xl w-full">
+        {/* TITLE */}
+        <div className="text-center pt-36 md:pt-24 mb-12 md:mb-20">
+          <h1 className="text-4xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+            HI, I'M
+          </h1>
 
-          {/* Top Right */}
-          <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-r from-pink-500 via-orange-400 to-purple-500 rounded-full opacity-25 blur-2xl animate-float-medium"></div>
+          <h1 className="text-4xl md:text-8xl font-black">SELVAPANDI</h1>
 
-          {/* Middle Left */}
-          <div className="absolute top-1/2 left-16 w-52 h-52 bg-gradient-to-r from-orange-400 via-purple-500 to-pink-500 rounded-full opacity-20 blur-2xl animate-float-fast"></div>
-
-          {/* Bottom Right */}
-          <div className="absolute bottom-16 right-32 w-72 h-72 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 rounded-full opacity-25 blur-3xl animate-float-slow"></div>
-
-          {/* Bottom Left */}
-          <div className="absolute bottom-24 left-28 w-64 h-64 bg-gradient-to-r from-pink-500 via-orange-400 to-purple-500 rounded-full opacity-30 blur-2xl animate-float-medium"></div>
-
-          {/* Center (behind text, faint) */}
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-r from-orange-400 via-purple-500 to-pink-500 rounded-full opacity-15 blur-3xl animate-float-fast"></div>
+          {/* ROLE SWITCH ANIMATION */}
+          <div className="mt-6 h-10 flex justify-center items-center overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={roles[roleIndex]}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="text-black dark:text-white text-lg md:text-4xl font-medium"
+              >
+                {roles[roleIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
         </div>
 
-        {/* Left: text */}
-        <div className="relative z-30 w-full sm:px-8 md:px-12 xl:mb-0 mb-10 mt-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 40,
-              damping: 25,
-              delay: 1.3,
-              duration: 1.5,
-            }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-4 text-white"
-          >
-            Hi I'm{" "}
-            <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 bg-clip-text text-transparent uppercase">
-              Selvapandi
-            </span>
-            <br />
-            <span className="text-purple-400 sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl h-12 inline-flex items-center">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.6 }}
-                  className="block"
-                >
-                  {words[index]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
-          </motion.h1>
-<br/>
-          <motion.p
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 40,
-              damping: 25,
-              delay: 1.8,
-              duration: 1.5,
-            }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-purple-200 max-w-2xl leading-relaxed capitalize backdrop-blur-md bg-white/10 border border-white/20 rounded-xl p-4 sm:p-6 shadow-lg"
-          >
-            I craft modern, responsive web and mobile apps that are fast, reliable, and user-friendly. Specializing in MERN stack and React Native, I focus on clean code, clear communication, and on-time delivery to turn ideas into impactful digital solutions.
-          </motion.p>
+        {/* GRID LAYOUT */}
+        <div className="grid md:grid-cols-3 items-center gap-10 p-5">
+          {/* LEFT SIDE */}
+          <div className="space-y-6 text-black dark:text-gray-300 text-sm md:text-xl text-center md:text-left">
+            <p className="max-w-[320px] mx-auto md:mx-0">
+              Full-stack developer passionate about building modern web and
+              mobile applications with clean UI and scalable backend systems.
+            </p>
 
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 40,
-              damping: 25,
-              delay: 2,
-              duration: 1.5,
-            }}
-            className="flex flex-wrap gap-4 mt-5"
-          >
-            {/* View Work */}
-            <a href="#Projects">
-              <div className="p-[2px] rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 hover:from-orange-400 hover:via-pink-500 hover:to-purple-500 transition duration-300 inline-block">
-                <button className="bg-black text-white py-2 px-6 sm:px-8 rounded-full font-semibold shadow-lg transition duration-200 hover:scale-105">
-                  View my work
-                </button>
-              </div>
+            {/* SOCIAL ICONS */}
+            <div className="flex justify-center md:justify-start gap-6">
+              <a
+                href="https://github.com/avlesidnapwebdev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github
+                  className="hover:text-purple-400 transition cursor-pointer"
+                  size={28}
+                />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/selva-pandi-489981213/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin
+                  className="hover:text-purple-400 transition cursor-pointer"
+                  size={28}
+                />
+              </a>
+
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=selvapandi322@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Mail
+                  className="hover:text-purple-400 transition cursor-pointer"
+                  size={28}
+                />
+              </a>
+            </div>
+          </div>
+
+          {/* CENTER AVATAR */}
+          <div className="flex justify-center order-first md:order-none">
+            <img
+              src={image}
+              alt="avatar"
+              className="w-[220px] sm:w-[260px] md:w-[420px] animate-float drop-shadow-xl"
+            />
+          </div>
+
+          {/* RIGHT SIDE BUTTONS */}
+          <div className="flex flex-col items-center md:items-end gap-6">
+            <a href="#contact">
+              <button className="px-14 py-4 text-lg rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105 transition font-semibold shadow-lg">
+                CONTACT ME
+              </button>
             </a>
-
-            {/* Hire Me */}
-            <button
-              onClick={openContactForm}
-              className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white py-2 px-6 sm:px-8 rounded-full font-semibold shadow-lg transition duration-200 hover:scale-105 border-none "
-            >
-              Hire me
-            </button>
-
-            {/* CV Button */}
-            {/* <a
-              href="/SELVAPANDI.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download
-            >
-              <div className="p-[2px] rounded-full bg-gradient-to-r from-white via-pink-500 to-white hover:from-purple-500 hover:via-pink-500 hover:to-orange-400 transition duration-300 inline-block">
-                <button className="bg-black text-white py-2 px-6 sm:px-8 rounded-full font-semibold shadow-lg transition duration-200 hover:scale-105">
-                  Download CV
-                </button>
-              </div>
-            </a> */}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 40,
-              damping: 25,
-              delay: 2.2,
-              duration: 1.5,
-            }}
-          >
-            <AnimatedCounter />
-          </motion.div>
+            <a href="#projects">
+              <button className="px-10 py-4 text-lg rounded-full border border-black/20 dark:border-white/20 hover:bg-white/10 hover:scale-105 transition font-semibold">
+                VIEW PROJECTS
+              </button>
+            </a>
+          </div>
         </div>
-
-        {/* Right: image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, x: 200 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ type: "spring", stiffness: 50, damping: 20, delay: 1 }}
-          className="z-20 w-full  justify-center items-center xl:justify-end hidden xl:flex"
-        >
-          <img
-            className="xl:h-[40rem] lg:h-[30rem] md:h-[22rem] h-[16rem] rounded-full"
-            src={Selvapandi}
-            alt="Selvapandi"
-          />
-        </motion.div>
-      </section>
-
-      {/* Mobile Image */}
-      <div className="flex justify-center items-center mt-8 xl:hidden">
-        <img
-          className="h-[16rem] sm:h-[22rem] md:h-[30rem] lg:h-[40rem] rounded-full"
-          src={Selvapandi}
-          alt="Selvapandi"
-        />
       </div>
-
-      {/* Contact Modal */}
-      <ContactFormModal
-        contactFormOpen={contactFormOpen}
-        closeContactForm={closeContactForm}
-      />
-    </>
+    </section>
   );
 }

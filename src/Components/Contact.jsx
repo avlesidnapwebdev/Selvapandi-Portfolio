@@ -1,144 +1,156 @@
-import React, { useRef, useEffect, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ContactFormModal from "./ContactForm"; // ✅ reuse modal
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { FiMail } from "react-icons/fi";
 
 export default function Contact() {
-  // main refs
-  const circleRef = useRef(null);
-  const sectionRef = useRef(null);
-  const initialTextRef = useRef(null);
-  const finalTextRef = useRef(null);
+  const formRef = useRef();
 
-  // contact modal state
-  const [contactFormOpen, setContactFormOpen] = useState(false);
-  const openContactForm = () => setContactFormOpen(true);
-  const closeContactForm = () => setContactFormOpen(false);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-    // cleanup existing scrollTriggers
-    const cleanup = () => {
-      ScrollTrigger.getAll().forEach((st) => {
-        if (st.vars.trigger === sectionRef.current) {
-          st.kill(true);
-        }
-      });
-    };
-    cleanup();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-    gsap.set(circleRef.current, { scale: 1, backgroundColor: "white" });
-    gsap.set(initialTextRef.current, { opacity: 1 });
-    gsap.set(finalTextRef.current, { opacity: 0 });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "+=200%",
-        pin: true,
-        scrub: 0.5,
-        anticipatePin: 1,
-        fastScrollEnd: true,
-        preventOverlaps: true,
-        invalidateOnRefresh: true,
-      },
+    setForm({
+      ...form,
+      [name]: value,
     });
+  };
 
-    tl.to(
-      circleRef.current,
-      {
-        scale: 5,
-        backgroundColor: "#9333EA",
-        ease: "power1.inOut",
-        duration: 0.5,
-      },
-      0
-    );
-    tl.to(
-      initialTextRef.current,
-      {
-        opacity: 0,
-        ease: "power1.out",
-        duration: 0.2,
-      },
-      0.1
-    );
-    tl.to(
-      circleRef.current,
-      {
-        scale: 17,
-        backgroundColor: "#E9D5FF",
-        boxShadow: "0 0 50px 20px rgba(233,213,255,0.3)",
-        ease: "power2.inOut",
-        duration: 0.5,
-      },
-      0.5
-    );
-    tl.to(
-      finalTextRef.current,
-      {
-        opacity: 1,
-        ease: "power2.in",
-        duration: 0.2,
-      },
-      0.7
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    return cleanup;
-  }, []);
+    setLoading(true);
+    setStatus(null);
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
+      );
+
+      setStatus("success");
+
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+
+      setStatus("error");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <>
-      <section id="Contact"
-        ref={sectionRef}
-        className="flex items-center justify-center bg-black relative h-screen overflow-hidden"
-        style={{ overscrollBehavior: "none" }}
-      >
-        {/* Expanding Circle */}
-        <div
-          ref={circleRef}
-          className="absolute w-40 h-40 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full flex items-center justify-center transition-shadow duration-1000 shadow-violet-300/50 shadow-lg bg-gradient-to-r from-violet-400 to-pink-100 z-0"
-        >
-          <p
-            ref={initialTextRef}
-            className="text-black font-bold text-base sm:text-lg md:text-xl flex items-center text-center"
-          >
-            SCROLL DOWN
-          </p>
+    <section
+      id="contact"
+      className="min-h-screen flex items-center justify-center px-6
+      bg-white text-black
+      dark:bg-black dark:text-white
+      transition-colors duration-300"
+    >
+      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-16">
+        {/* LEFT SIDE */}
+
+        <div>
+          <h2 className="text-5xl md:text-7xl font-black leading-tight">
+            LET'S
+            <br />
+            GET IN
+            <br />
+            TOUCH
+          </h2>
+
+          <div className="mt-8 flex items-center gap-3 text-lg opacity-80">
+            <FiMail />
+
+            <a
+              href="mailto:selvapandi322@gmail.com"
+              className="hover:text-purple-500 transition"
+            >
+              selvapandi322@gmail.com
+            </a>
+          </div>
         </div>
 
-        {/* Final text */}
-        <div
-          ref={finalTextRef}
-          className="text-center relative flex flex-col items-center justify-center opacity-0 z-10"
-        >
-          <h1 className="text-black font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-5 leading-tight">
-            Step Into The Future With Selvapandi
-          </h1>
+        {/* CONTACT FORM */}
 
-          <p className="text-black text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mb-6">
-            Front-end developer specialized in crafting modern, responsive web
-            interfaces using React, Tailwind CSS, and advanced UI animation
-            techniques. Focused on clean code, and pixel-perfect design that
-            stand out.
-          </p>
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6"
+        >
+          <input
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            placeholder="Full Name"
+            required
+            className="border-b border-gray-400 py-3 outline-none bg-transparent
+            dark:border-gray-600"
+          />
+
+          <input
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="Email"
+            required
+            className="border-b border-gray-400 py-3 outline-none bg-transparent
+            dark:border-gray-600"
+          />
+
+          <textarea
+            name="message"
+            value={form.message}
+            onChange={handleChange}
+            placeholder="Message"
+            rows="4"
+            required
+            className="border-b border-gray-400 py-3 outline-none resize-none bg-transparent
+            dark:border-gray-600"
+          />
 
           <button
-            onClick={openContactForm}
-            className="px-6 py-2 rounded-xl bg-black text-white hover:bg-white hover:text-black transition-all duration-500"
+            type="submit"
+            disabled={loading}
+            className="border border-black dark:border-white rounded-full py-3 mt-4
+            hover:bg-black hover:text-white
+            dark:hover:bg-white dark:hover:text-black
+            transition"
           >
-            Contact Me
+            {loading ? "Sending..." : "SEND"}
           </button>
-        </div>
-      </section>
 
-      {/* Contact Form Modal */}
-      <ContactFormModal
-        contactFormOpen={contactFormOpen}
-        closeContactForm={closeContactForm}
-      />
-    </>
+          {/* STATUS MESSAGE */}
+
+          {status === "success" && (
+            <p className="text-green-500 text-center text-sm mt-2 font-medium">
+             Message sent successfully!
+            </p>
+          )}
+
+          {status === "error" && (
+            <p className="text-red-500  text-center text-sm mt-2 font-medium">
+              Failed to send message. Please try again.
+            </p>
+          )}
+        </form>
+      </div>
+    </section>
   );
 }

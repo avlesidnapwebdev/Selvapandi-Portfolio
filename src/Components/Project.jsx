@@ -1,219 +1,215 @@
-import React from "react";
-import {
-  FaGithub,
-  FaExternalLinkAlt,
-  FaMobileAlt,
-  FaDownload,
-} from "react-icons/fa";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
 
-// ✅ Import images
-import Aqua from "../assets/Aquariumshop.png";
-import pilotHorizons from "../assets/pilotHorizons.png";
-import expense from "../assets/expensesracker.png";
-import prabazone from "../assets/prabazone.png";
+import Aqua from "../assets/Aquariumshop.webp";
+import pilotHorizons from "../assets/pilotHorizons.webp";
+import expense from "../assets/expensesracker.webp";
+import prabazone from "../assets/prabazone.webp";
 
-export default function Project() {
+export default function Projects() {
+
+  const [activeCard, setActiveCard] = useState(null);
+
   const projectList = [
     {
-      id: 1,
-      title: "Expenses Tracker (Web & Mobile)",
-      description:
-        "A full-stack MERN financial management application with both web and React Native mobile versions. Features secure authentication, expense tracking, and analytics dashboards with interactive data visualization.",
-      tech: [
-        "React",
-        "React Native",
-        "Expo",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "JWT",
-        "REST API",
-        "Chart Analytics",
-        "Tailwind CSS",
-        "MERN Stack",
-      ],
+      id: "01",
+      subtitle: "Web & Mobile Application",
+      title: "Expenses Tracker",
+      tech: "React JS, Node JS, Express JS, MongoDB",
+
       image: expense,
-      github: "https://github.com/avlesidnapwebdev/ExpenseTracker",
-      githubMobile: "https://github.com/avlesidnapwebdev/ExpenseTracker-Mobile",
+
       live: "https://expensestra.selvapandi.com/",
-      download:
-        "https://drive.google.com/uc?export=download&id=15o9ZvK9TFBznM_vJdumKUYkY60LEN1j_",
+      githubWeb: "https://github.com/avlesidnapwebdev/ExpenseTracker",
+      githubMobile: "https://github.com/avlesidnapwebdev/ExpenseTracker-Mobile",
     },
+
     {
-      id: 2,
-      title: "Aquarium Shop E-commerce",
-      description:
-        "A full-stack MERN e-commerce platform featuring role-based authentication, cart, wishlist, checkout, and admin dashboard. Backend deployed on Oracle Cloud VM with Nginx, Cloudflare proxy, custom domain, HTTPS, and production-ready API setup.",
-      tech: [
-  "React",
-  "Node.js",
-  "Express.js",
-  "MongoDB",
-  "JWT Auth",
-  "Nginx",
-  "Oracle Cloud VM",
-  "Cloudflare",
-  "MERN Stack",
-],
+      id: "02",
+      subtitle: "Web Application",
+      title: "Aquarium Shop",
+      tech: "React JS, Node JS, Express JS, MongoDB",
+
       image: Aqua,
-      github: "https://github.com/avlesidnapwebdev/AquariumShop",
+
       live: "https://aquariumshop.selvapandi.com/",
+      githubWeb: "https://github.com/avlesidnapwebdev/AquariumShop",
     },
+
     {
-      id: 3,
+      id: "03",
+      subtitle: "WordPress Project",
       title: "Pilot Horizons",
-      description:
-        "A professional WordPress website built for Pilot Horizons with responsive design and optimized SEO.",
-      tech: ["WordPress", "Elementor", "SEO", "HTML", "CSS"],
+      tech: "WordPress",
+
       image: pilotHorizons,
-      github: "",
+
       live: "https://pilothorizons.infinityfreeapp.com/",
     },
+
     {
-      id: 4,
+      id: "04",
+      subtitle: "WordPress Project",
       title: "PrabaZone",
-      description:
-        "A professional WordPress website built for PrabaZone with responsive design and optimized SEO.",
-      tech: ["WordPress", "Elementor", "SEO", "HTML", "CSS"],
+      tech: "WordPress",
+
       image: prabazone,
-      github: "",
+
       live: "https://prabazone.com",
     },
   ];
 
   return (
-    <section id="Projects" className="relative py-20 bg-black">
-      {/* Title */}
-      <div className="container mx-auto px-6 text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold uppercase text-white mb-4">
-          Projects
+    <section
+      id="projects"
+      className="py-24 bg-white text-black dark:bg-black dark:text-white transition-colors duration-300"
+    >
+
+      {/* TITLE */}
+
+      <div className="text-center mb-16 md:mb-24">
+
+        <h2 className="text-4xl md:text-8xl font-black uppercase">
+          PROJECTS
         </h2>
-        <div className="w-5/6 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+
       </div>
 
-      {/* Timeline */}
-      <div className="container mx-auto px-6 relative">
-        <motion.div
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-pink-500 transform -translate-x-1/2 origin-top"
-        />
+
+      {/* STACK CONTAINER */}
+
+      <div className="max-w-6xl mx-auto px-3 relative h-[360vh]">
 
         {projectList.map((p, index) => {
-          const isLeft = index % 2 === 0;
-          return (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, x: isLeft ? -80 : 80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="mb-20 flex flex-col md:flex-row items-center relative"
-            >
-              {/* Dot */}
-              <motion.span
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="hidden md:block absolute left-[49.3%] top-20 w-6 h-6 bg-purple-500 rounded-full border-4 border-black transform -translate-x-1/2"
-              />
 
-              {/* Image */}
-              <div
-                className={`w-full md:w-1/2 p-4 ${
-                  isLeft ? "md:pr-10 md:text-right" : "md:order-2 md:pl-10"
-                }`}
-              >
-                <a href={p.live} target="_blank" rel="noopener noreferrer">
-                  <motion.img
+          const offset = index * 145;
+          const baseZ = 10 + index;
+
+          const zIndex =
+            activeCard === index
+              ? 100
+              : baseZ;
+
+          return (
+
+            <div
+              key={p.id}
+              className="sticky transition-transform duration-300"
+              style={{ top: `${100 + offset}px`, zIndex }}
+              onMouseEnter={() => setActiveCard(index)}
+              onMouseLeave={() => setActiveCard(null)}
+            >
+
+              <div className="bg-neutral-100 dark:bg-neutral-900 border border-black/10 dark:border-white/10 rounded-3xl p-5 md:p-8 my-6 shadow-xl hover:scale-[1.02] transition duration-300">
+
+                {/* HEADER */}
+
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
+
+                  <div className="flex gap-3 items-start">
+
+                    <span className="text-2xl md:text-5xl font-bold">
+                      {p.id}
+                    </span>
+
+                    <div>
+
+                      <p className="text-xs uppercase opacity-60">
+                        {p.subtitle}
+                      </p>
+
+                      <h3 className="text-lg md:text-xl font-semibold">
+                        {p.title}
+                      </h3>
+
+                      <p className="text-xs md:text-sm opacity-60">
+                        {p.tech}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+
+                  {/* BUTTONS */}
+
+                  <div className="flex flex-wrap gap-2">
+
+                    {p.githubWeb && (
+                      <a
+                        href={p.githubWeb}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="border border-black/20 dark:border-white/20 rounded-full px-4 py-2 text-xs hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition"
+                      >
+                        GITHUB WEB
+                      </a>
+                    )}
+
+                    {p.githubMobile && (
+                      <a
+                        href={p.githubMobile}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="border border-black/20 dark:border-white/20 rounded-full px-4 py-2 text-xs hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition"
+                      >
+                        GITHUB MOBILE
+                      </a>
+                    )}
+
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="border border-black/20 dark:border-white/20 rounded-full px-4 py-2 text-xs hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition"
+                      >
+                        LIVE PROJECT
+                      </a>
+                    )}
+
+                  </div>
+
+                </div>
+
+
+                {/* IMAGE GRID */}
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                  <img
                     src={p.image}
                     alt={p.title}
-                    className="mx-auto w-[260px] sm:w-[320px] md:w-[420px] lg:w-[500px] h-auto rounded-xl transform -rotate-2 hover:scale-105 transition-transform duration-500"
+                    className="rounded-xl md:col-span-2"
                   />
-                </a>
-              </div>
 
-              {/* Details */}
-              <div
-                className={`w-full md:w-1/2 p-4 ${
-                  isLeft ? "md:pl-10 md:order-2" : "md:pr-10"
-                }`}
-              >
-                <h3 className="text-xl md:text-2xl font-semibold text-white">
-                  {p.title}
-                </h3>
+                  <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
 
-                <p className="text-gray-400 text-sm capitalize mt-2">
-                  {p.description}
-                </p>
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="rounded-xl"
+                    />
 
-                {/* Tech */}
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {p.tech.map((t, i) => (
-                    <span
-                      key={i}
-                      className="text-xs bg-purple-900/40 text-purple-300 px-2 py-1 rounded-full"
-                    >
-                      {t}
-                    </span>
-                  ))}
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="rounded-xl"
+                    />
+
+                  </div>
+
                 </div>
 
-                {/* Buttons */}
-                <div className="flex flex-wrap gap-3 mt-5">
-                  {p.github && (
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-gray-200 border border-purple-500 px-3 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition"
-                    >
-                      <FaGithub /> GitHub
-                    </a>
-                  )}
-
-                  {p.githubMobile && (
-                    <a
-                      href={p.githubMobile}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-gray-200 border border-purple-500 px-3 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition"
-                    >
-                      <FaMobileAlt /> Mobile GitHub
-                    </a>
-                  )}
-
-                  {p.live && (
-                    <a
-                      href={p.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-white bg-gradient-to-r from-purple-500 to-pink-500 px-3 py-2 rounded-lg hover:opacity-90 transition"
-                    >
-                      <FaExternalLinkAlt /> Live Preview
-                    </a>
-                  )}
-
-                  {p.download && (
-                    <a
-                      href={p.download}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-white bg-green-600 px-3 py-2 rounded-lg hover:bg-green-700 transition"
-                    >
-                      <FaDownload /> Download App
-                    </a>
-                  )}
-                </div>
               </div>
-            </motion.div>
+
+            </div>
+
           );
+
         })}
+
       </div>
+
     </section>
   );
 }

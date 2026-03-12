@@ -1,39 +1,26 @@
-import {  useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from './Components/Header'
-import Hero from './Components/Hero'
-import Project from './Components/Project'
-import Footer from './Components/Footer'
-import Skills from "./Components/Skills";
-import ScrollToTop from "./Components/ScrollToTop";
+import Header from "./Components/Header";
+import Hero from "./Components/Hero";
 import ProgressBar from "./Components/ProgressBar";
+import About from "./Components/About";
+import Skills from "./Components/Skills";
+import Project from "./Components/Project";
+import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
+import ScrollToTop from './Components/ScrollToTop'
 function App() {
-
-  useEffect(()=>{
-    //register ScrollTrigger plugin
-    gsap.registerPlugin(ScrollTrigger)
-
-    //Refresh ScrollTrigger when the page is fully loaded
-    ScrollTrigger.refresh()
-
-    //clean up ScrollTrigger on component unmount
-    return()=>{
-      ScrollTrigger.getAll().forEach((trigger)=>trigger.kill())
-    }
-  })
-
   return (
     <>
       <Header />
-      <Hero />      
+      <Hero />
+      <About />
       <Skills />
       <Project />
+      <Contact />
       <Footer />
-      <ScrollToTop />
       <ProgressBar />
+      <ScrollToTop />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
